@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import CompoundPoissonCanvas from '../components/CompoundPoissonCanvas'
 
@@ -17,23 +17,14 @@ function CountdownPill() {
 }
 
 function VisitorCounter() {
-  const [count, setCount] = useState(null)
-
-  useEffect(() => {
-    const token = import.meta.env.VITE_COUNTER_TOKEN
-    if (!token) return
-    fetch(`https://api.counterapi.dev/v1/${token}/visits/up`)
-      .then(r => r.json())
-      .then(d => setCount(d.count))
-      .catch(() => {})
-  }, [])
-
-  if (count === null) return null
-
   return (
-    <div className="mt-8 text-xs" style={{ color: 'var(--color-ink-faint)' }}>
-      <span style={{ color: 'var(--color-accent)', fontVariantNumeric: 'tabular-nums' }}>{count.toLocaleString()}</span>
-      {' '}unique visits
+    <div className="mt-8">
+      <img
+        src="https://hits.sh/gabpnunes.github.io/actuarial-revision.svg?style=flat-square&label=visits&color=c4b5fd&labelColor=08090e"
+        alt="visit counter"
+        height={20}
+        style={{ opacity: 0.7 }}
+      />
     </div>
   )
 }

@@ -1,0 +1,20 @@
+@layer base {
+  .katex *,
+  .katex *::before,
+  .katex *::after {
+    all: revert-layer;
+  }
+  .katex svg,
+  .katex img {
+    all: revert-layer;
+  }
+}
+
+.katex {
+  color: inherit;
+  font-size: 1.02em;
+}
+
+.katex-display {
+  margin: 0 !important;
+}

@@ -29,6 +29,8 @@ jobs:
 
       - run: npm ci
       - run: npx vite build
+        env:
+          VITE_COUNTER_TOKEN: ${{ secrets.COUNTER_TOKEN }}
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

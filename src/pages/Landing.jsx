@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import CompoundPoissonCanvas from '../components/CompoundPoissonCanvas'
 
@@ -12,6 +12,28 @@ function CountdownPill() {
          style={{ background: 'var(--color-bg-elev-2)', color: 'var(--color-ink-muted)', border: '1px solid var(--border)' }}>
       <span style={{ color: days <= 7 ? 'var(--color-bad)' : 'var(--color-accent)' }}>{days}</span>
       <span>days until exam</span>
+    </div>
+  )
+}
+
+function VisitorCounter() {
+  const [count, setCount] = useState(null)
+
+  useEffect(() => {
+    const token = import.meta.env.VITE_COUNTER_TOKEN
+    if (!token) return
+    fetch(`https://api.counterapi.dev/v1/${token}/visits/up`)
+      .then(r => r.json())
+      .then(d => setCount(d.count))
+      .catch(() => {})
+  }, [])
+
+  if (count === null) return null
+
+  return (
+    <div className="mt-8 text-xs" style={{ color: 'var(--color-ink-faint)' }}>
+      <span style={{ color: 'var(--color-accent)', fontVariantNumeric: 'tabular-nums' }}>{count.toLocaleString()}</span>
+      {' '}unique visits
     </div>
   )
 }
@@ -82,6 +104,8 @@ export default function Landing() {
           <span>Press <kbd className="rounded px-1.5 py-0.5" style={{ background: 'var(--color-bg-elev-2)', border: '1px solid var(--border)' }}>1</kbd> Study Guide</span>
           <span>Press <kbd className="rounded px-1.5 py-0.5" style={{ background: 'var(--color-bg-elev-2)', border: '1px solid var(--border)' }}>2</kbd> Question Bank</span>
         </div>
+
+        <VisitorCounter />
       </div>
     </div>
   )

@@ -20,10 +20,10 @@ function VisitorCounter() {
   return (
     <div className="mt-8">
       <img
-        src="https://hits.sh/gabpnunes.github.io/actuarial-revision.svg?style=flat-square&label=visits&color=c4b5fd&labelColor=08090e"
+        src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.counterapi.dev%2Fv1%2Fgabpnunes-actuarial%2Fvisits%2Fup&query=%24.count&label=visits&color=C4B5FD&style=flat-square&labelColor=08090E"
         alt="visit counter"
         height={20}
-        style={{ opacity: 0.7 }}
+        style={{ opacity: 0.85 }}
       />
     </div>
   )

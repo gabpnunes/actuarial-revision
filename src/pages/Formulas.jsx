@@ -138,7 +138,9 @@ export default function Formulas() {
         <SubHead>Compound Sum</SubHead>
         <FormulaTable>
           <Row name="Compound sum" math={"S = X_1 + X_2 + \\cdots + X_N"} />
+          <Row name="Tower property" math={"\\mathbb{E}[S] = \\mathbb{E}[\\mathbb{E}[S \\mid N]]"} />
           <Row name="Expected value" math={"\\mathbb{E}[S] = \\mu_1 \\cdot \\mathbb{E}[N]"} />
+          <Row name="Law of total variance" math={"\\operatorname{Var}[W] = \\mathbb{E}[\\operatorname{Var}[W \\mid V]] + \\operatorname{Var}[\\mathbb{E}[W \\mid V]]"} />
           <Row name="Variance" math={"\\operatorname{Var}[S] = \\mathbb{E}[N]\\,\\operatorname{Var}[X] + \\mu_1^{2}\\,\\operatorname{Var}[N]"} />
           <Row name="Compound Poisson variance" math={"\\operatorname{Var}[S] = \\lambda\\,\\mathbb{E}[X^2]"} />
         </FormulaTable>
@@ -200,7 +202,8 @@ export default function Formulas() {
         <SubHead>Inference</SubHead>
         <FormulaTable>
           <Row name="z-statistic" math={"z = \\frac{\\hat{\\beta}_j}{\\operatorname{SE}(\\hat{\\beta}_j)}"} note="significant if |z| > 2" />
-          <Row name="Relative effect (log link)" math={"\\frac{\\lambda_{\\text{female}}}{\\lambda_{\\text{male}}} = \\exp(\\hat{\\beta}_2)"} />
+          <Row name="Relative effect (binary)" math={"\\frac{\\lambda_{\\text{female}}}{\\lambda_{\\text{male}}} = \\exp(\\hat{\\beta}_2)"} />
+          <Row name="Relative effect (continuous)" math={"\\frac{\\lambda(x + \\Delta x)}{\\lambda(x)} = \\exp(\\hat{\\beta}_1 \\cdot \\Delta x)"} />
         </FormulaTable>
 
         {/* ── 3  Insurance Pricing ── */}
@@ -240,6 +243,11 @@ export default function Formulas() {
           <Row name="Deaths" math={"d_x = \\ell_x - \\ell_{x+1}"} />
           <Row name="n-year survival prob." math={"{}_{n}p_x = \\frac{\\ell_{x+n}}{\\ell_x}"} />
           <Row name="n-year death prob." math={"{}_{n}q_x = 1 - {}_{n}p_x"} />
+          <Row name="Multiplication rule" math={"{}_{k}p_x \\cdot {}_{s}p_{x+k} = {}_{k+s}p_x"} />
+          <Row name="Deferred death prob." math={"{}_{k|s}q_x = {}_{k}p_x \\cdot {}_{s}q_{x+k}"} />
+          <Row name="Force of mortality" math={"\\mu_x = \\lim_{h \\downarrow 0} \\frac{{}_{h}q_x}{h}"} />
+          <Row name="Survival from force" math={"{}_{h}p_x = e^{-h\\,\\mu_x}"} />
+          <Row name="Death prob. from force" math={"q_x = 1 - e^{-\\mu_x}"} />
           <Row name="Curtate life expectancy" math={"e_x = \\sum_{k=1}^{\\infty} {}_{k}p_x"} />
           <Row name="Complete life expectancy" math={"\\mathring{e}_x = e_x + \\tfrac{1}{2}"} />
         </FormulaTable>
@@ -248,9 +256,11 @@ export default function Formulas() {
         <SectionHeader id="s6" number="6" title="Actuarial Present Values" />
 
         <FormulaTable>
+          <Row name="General APV" math={"\\text{APV} = \\sum_{t=0}^{\\infty} v(t) \\cdot c_t \\cdot {}_{t}p_x"} />
           <Row name="Lifelong annuity APV" math={"\\ddot{a}_x = \\sum_{k=0}^{\\infty} {}_{k}p_x \\cdot v^k"} />
           <Row name="Temporary annuity APV" math={"\\ddot{a}_{x:\\overline{n}|} = \\sum_{k=0}^{n-1} {}_{k}p_x \\cdot v^k"} />
           <Row name="Deferred annuity APV" math={"{}_{n|}\\ddot{a}_x = \\sum_{k=n}^{\\infty} {}_{k}p_x \\cdot v^k"} />
+          <Row name="Annuity decomposition" math={"\\ddot{a}_x = \\ddot{a}_{x:\\overline{n}|} + {}_{n|}\\ddot{a}_x"} />
           <Row name="Term insurance APV" math={"A_{x:\\overline{n}|}^{1} = c \\cdot \\sum_{j=0}^{\\omega - x - 1} v^{j+1}\\; {}_{j}p_x \\; q_{x+j}"} />
           <Row name="Equivalence principle" math={"\\text{APV}_{\\text{premiums}} = \\text{APV}_{\\text{benefits}}"} />
         </FormulaTable>
@@ -304,10 +314,13 @@ export default function Formulas() {
         {/* ── 10  Multi-Period & American Options ── */}
         <SectionHeader id="s10" number="10" title="Multi-Period & American Options" />
 
-        <SubHead>Parameters</SubHead>
+        <SubHead>Stock Model & Parameters</SubHead>
         <FormulaTable>
+          <Row name="Log-returns" math={"\\ln(S_{t+\\Delta t}/S_t) \\sim N(\\nu\\,\\Delta t,\\; \\sigma^2\\,\\Delta t)"} />
           <Row name="Up factor" math={"u = e^{\\sigma\\sqrt{\\Delta t}}"} />
           <Row name="Down factor" math={"d = e^{-\\sigma\\sqrt{\\Delta t}}"} />
+          <Row name="Real-world probability" math={"p \\approx \\tfrac{1}{2} + \\tfrac{1}{2}\\bigl(\\tfrac{\\nu}{\\sigma}\\bigr)\\sqrt{\\Delta t}"} />
+          <Row name="Stock price at maturity" math={"S \\cdot u^{\\,j} \\cdot d^{\\,n-j}, \\quad j = 0, 1, \\ldots, n"} />
           <Row name="Risk-neutral prob. (multi)" math={"q = \\frac{e^{r\\Delta t} - d}{u - d}"} />
         </FormulaTable>
 

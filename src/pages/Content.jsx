@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState, useEffect, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { topics } from '../data/topics'
 import SidebarNav from '../components/SidebarNav'
 import TopicSection from '../components/TopicSection'
@@ -61,6 +62,9 @@ export default function Content() {
       <aside className="sticky top-0 hidden h-screen w-[280px] shrink-0 overflow-y-auto border-r p-6 md:block"
              style={{ borderColor: 'var(--border)', background: 'var(--color-bg-elev)' }}>
         <div className="mb-6">
+          <Link to="/" className="mb-3 inline-block text-xs" style={{ color: 'var(--color-ink-muted)', textDecoration: 'none' }}>
+            &larr; Home
+          </Link>
           <h2 className="text-lg" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink-strong)' }}>
             Study Guide
           </h2>

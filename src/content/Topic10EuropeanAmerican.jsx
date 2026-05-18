@@ -215,13 +215,13 @@ export default function Topic10EuropeanAmerican() {
           </thead>
           <tbody>
             {[
-              ['Multi-period tree', 'Divide time into n steps; n+1 outcomes at maturity'],
-              ['Backward induction', 'Price from maturity back to now, one step at a time'],
+              ['Multi-period tree', '\\text{Divide time into } n \\text{ steps; } n+1 \\text{ outcomes at maturity}'],
+              ['Backward induction', '\\text{Price from maturity back to now, one step at a time}'],
               ['Risk-neutral pricing', 'C = e^{-r\\Delta t}(qC_u + (1-q)C_d)'],
-              ['European option', 'Exercise at maturity only'],
-              ['American option', '\\max\\{\\text{exercise}, \\text{continuation}\\} at each node'],
+              ['European option', '\\text{Exercise at maturity only}'],
+              ['American option', '\\max\\{\\text{exercise}, \\text{continuation}\\} \\text{ at each node}'],
               ['u, d parameters', 'u = e^{\\sigma\\sqrt{\\Delta t}}, \\; d = e^{-\\sigma\\sqrt{\\Delta t}}'],
-              ['Convergence', 'As \\Delta t \\to 0, binomial → Black–Scholes'],
+              ['Convergence', '\\text{As } \\Delta t \\to 0 \\text{, binomial} \\to \\text{Black\\textendash Scholes}'],
             ].map(([concept, idea], idx) => (
               <tr key={idx} style={{ borderBottom: '1px solid var(--border)' }}>
                 <td className="px-4 py-2" style={{ fontWeight: 500 }}>{concept}</td>

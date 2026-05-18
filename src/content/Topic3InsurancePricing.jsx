@@ -465,7 +465,7 @@ export default function Topic3InsurancePricing() {
               ['Simple Poisson MLE', '\\hat{\\lambda} = \\sum y_i / n'],
               ['MLE with exposure', '\\hat{\\lambda} = \\sum y_i / \\sum w_i'],
               ['Poisson GLM', 'Y_i \\sim \\text{Poi}(w_i \\cdot \\exp[\\eta_i])'],
-              ['Offset', '\\log w_i enters \\eta_i with coefficient 1'],
+              ['Offset', '\\log w_i \\text{ enters } \\eta_i \\text{ with coefficient } 1'],
               ['Log link → multiplicative', '\\text{E}[Y_i] = w_i \\cdot \\prod_j e^{\\beta_j x_{ji}}'],
               ['Bernoulli MLE', '\\hat{p} = \\sum y_i / n'],
               ['Logit link', 'g(p) = \\ln(p/(1-p)) \\; \\Rightarrow \\; p \\in (0,1)'],

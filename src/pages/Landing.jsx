@@ -51,6 +51,7 @@ export default function Landing() {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
       if (e.key === '1') navigate('/content')
       if (e.key === '2') navigate('/questions')
+      if (e.key === '3') navigate('/formulas')
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -82,18 +83,22 @@ export default function Landing() {
           Introduction to Econometrics &amp; Actuarial Science — UvA 2025/2026
         </p>
 
-        <div className="mt-10 grid w-full max-w-md grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-10 grid w-full max-w-md grid-cols-1 gap-4 sm:grid-cols-3">
           <CTACard to="/content" title="Study Guide"
                    desc="10 topics, from compound Poisson to binomial pricing"
                    onMouseMove={handleMouseMove} />
           <CTACard to="/questions" title="Question Bank"
                    desc="39 questions from exercises & past exams"
                    onMouseMove={handleMouseMove} />
+          <CTACard to="/formulas" title="Formula Sheet"
+                   desc="All key formulas in one scannable page"
+                   onMouseMove={handleMouseMove} />
         </div>
 
         <div className="mt-8 flex gap-6 text-xs" style={{ color: 'var(--color-ink-faint)' }}>
           <span>Press <kbd className="rounded px-1.5 py-0.5" style={{ background: 'var(--color-bg-elev-2)', border: '1px solid var(--border)' }}>1</kbd> Study Guide</span>
           <span>Press <kbd className="rounded px-1.5 py-0.5" style={{ background: 'var(--color-bg-elev-2)', border: '1px solid var(--border)' }}>2</kbd> Question Bank</span>
+          <span>Press <kbd className="rounded px-1.5 py-0.5" style={{ background: 'var(--color-bg-elev-2)', border: '1px solid var(--border)' }}>3</kbd> Formulas</span>
         </div>
 
         <VisitorCounter />
